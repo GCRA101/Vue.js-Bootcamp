@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Capturing Input with v-model</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Two-Way Binding -->
+            <input v-model="message" placeholder="Type something..." />
+            <!-- Text Interpolation -->
+            <p> You typed: {{message}}</p>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+         <script>
+            // 1. Create a Vue Applicatoin Instance + Build its Reactive State, Watchers, Methods...
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        message:''
+                    };
+                }
+            });
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount("#app");
+         </script>
+
+    </body>
+</html>

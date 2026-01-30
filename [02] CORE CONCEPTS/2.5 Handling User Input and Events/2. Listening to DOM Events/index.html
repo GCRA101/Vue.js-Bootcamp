@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listening to DOM Events</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Event Listening -->
+            <button @click="handleClick">Click Me!</button>
+            <!-- Text Binding -->
+            <p>{{status}}</p>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+         <script>
+            // 1. Create a Vue Application Instance + Build its Reactive State, Watchers and Methods
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        status:'Waiting...'
+                    };
+                },
+                // Methods
+                methods: {
+                    handleClick() {
+                        this.status='Button clicked!';
+                    }
+                }
+            });
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount("#app");
+
+         </script>
+
+
+    </body>
+</html>

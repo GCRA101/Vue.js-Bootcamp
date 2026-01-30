@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Watchers</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->        
+        <div id="app">
+            <!-- Two-Way Binding -->
+            <input id="search" placeholder="Search..." />
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- JQuery Javascript File -->
+        <script src="../jquery-3.7.1.min.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+                // 1. Assign Event Listener to Input HTML Element
+                $("input").on("input", function searchTerm() {
+                        var oldVal = $(this).data("oldValue");
+                        var newVal = $(this).val();
+                        console.log(`Search changed from "${oldVal}" to "${newVal}`);
+                        fetchResults(newVal);
+                    });
+                // 2. Utility Function printing message on Web Browser's Console Window
+                function fetchResults(query) {
+                        // Simulate API Call
+                        console.log(`Fetching results for: ${query}`);
+                }
+
+        </script>
+
+    </body>
+</html>

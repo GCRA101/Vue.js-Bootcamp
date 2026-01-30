@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <!-- Head ------------------------------------------------------------------------>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computed Properties</title>
+    </head>
+
+    <!-- Body ------------------------------------------------------------------------>
+    <body>
+        <!-- HTML Content ------------------------------------------------------------>
+        <div>
+            <!-- Two-Way Data Binding -->
+            <input id="firstName" placeholder="First Name"/>
+            <input id="lastName" placeholder="Last Name"/>
+            <!-- Text Interpolation -->
+        </div>
+
+        <!-- References to JS Files -------------------------------------------------->
+        <!-- JQuery Javascript File -->
+        <script src="../jquery-3.7.1.min.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Define function-scoped variables
+            var firstName='';
+            var lastName='';
+            /* 2. Assign Event Listener to input html elements using event handler function
+                  creating new html paragraph element displaying the full input name */
+            $("input").on("input",function() {
+                if (this.id=="firstName") {firstName=$("#firstName").val();};
+                if (this.id=="lastName") {lastName=$("#lastName").val();};
+                $("p").remove();
+                $("#lastName").after(fullName());
+            });
+            /* 3. Define Utility Function generating the <p></p> html element displaying
+                  the full input name */
+            function fullName() {
+                return "<p> Full Name: " + this.firstName + " " + this.lastName + "</p>";
+            };
+
+        </script>
+    </body>
+
+</html>

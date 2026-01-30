@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conditional Rendering and Loops</title>
+        <style>
+            html {
+                background-color: lightcoral;
+            }
+        </style>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->  
+        <div id="app">
+            <!-- Inputs Items to allow change of Reactive State -->
+            <input v-model="role" placeholder="Insert role (admin/editor)" />
+            <button @click="ToggleTip">Toggle Tip</button>
+            <button @click="ToggleSubscrip">Toggle Subscription</button>
+
+            <!-- Conditional Rendering -->
+            <p v-if="role==='admin'">Admin Dashboard</p>
+            <p v-else-if="role==='editor'">Editor Panel</p>
+            <p v-else>User Home</p>
+            <!-- Using v-show -->
+            <p v-show="showTip">Helpful tip: You can toggle this!</p>
+            <!-- Ternary Expressions for Inline Control -->
+             <p> {{ isSubscribed ? 'Thank you for subscribing!' : 
+                    'Please subscribe to access more content.'}} </p>
+            <!-- Rendering Lists with v-for -->
+             <ul>
+                <li v-for="item in shoppingList" :key="item.id">{{ item.name }}</li>
+             </ul>
+            <!-- Acessing index -->
+             <ul>
+                <li v-for="(item,index) in shoppingList" :key="index">
+                    {{ index + 1 }}. {{ item.name }}
+                </li>
+             </ul>
+             <!-- Nested Lists -->
+              <div v-for="category in categories" :key="category.name">
+                <h3> {{ category.name }} </h3>
+                <ul>
+                    <li v-for="product in category.products" :key="product.id">
+                        {{ product.name }}
+                    </li>
+                </ul>
+              </div>
+              <!-- Combining v-if with v-for -->
+               <ul>
+                 <li v-for="item in availableItems" :key="item.id">{{ item.name }}</li>
+               </ul>
+        </div>
+
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Instantiate Vue Application + Build its Reactive State + Methods + Computed Variables
+            const app = Vue.createApp ({
+                // Reactive State
+                data() {
+                    return {
+                        role: '',
+                        showTip: true,
+                        isSubscribed: true,
+                        shoppingList: [
+                            {id: 1, name: 'Milk'},
+                            {id: 2, name: 'Eggs'},
+                            {id: 3, name: 'Bread'}
+                        ],
+                        categories: [
+                            {name: "sport", products: [{id:1, name:'Ball'},{id:2, name:'Racket'}]},
+                            {name: "fight", products: [{id:1, name:'Gloves'},{id:2, name:'Hand-wraps'}]}
+                        ],
+                        items: [
+                            {id: 1, name: 'Milk', available: true},
+                            {id: 2, name: 'Eggs', available: false},
+                            {id: 3, name: 'Bread', available: false},
+                            {id: 4, name: 'Ball', available: true},
+                            {id: 5, name: 'Gloves', available: true},
+                        ]
+                    };
+                },
+
+                // Methods
+                methods: {
+                    ToggleTip() {
+                        this.showTip=!this.showTip;
+                    },
+                    ToggleSubscrip() {
+                        this.isSubscribed=!this.isSubscribed;
+                    }
+                },
+
+                // Computed
+                computed: {
+                    availableItems() {
+                        return this.items.filter(item => item.available);
+                    }
+                }
+
+            });
+            // 2. Instruct Vue to take control of the DOM Element having ID="app"
+            app.mount('#app');
+        </script>
+
+    </body>
+</html>

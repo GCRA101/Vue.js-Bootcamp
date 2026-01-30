@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Submission</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Event Listening -->
+            <form @submit.prevent="submitForm">
+                <!-- Two-Way Binding -->
+                <input v-model="name" placeholder="Your name"/>
+                <!-- Two-Way Binding -->
+                <textarea v-model="feedback" placeholder="Your feedback"></textarea>
+                <button type="submit">Send</button>
+            </form>
+            
+            <p v-if="submitted">Thanks for your feedback, {{name}}!</p>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Create a Vue Application Instance + Build its Reactive State, Watchers and Methods
+            const app=Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        name: '',
+                        feedback: '',
+                        submitted: false
+                    };
+                },
+                // Methods
+                methods: {
+                    submitForm() {
+                        if (this.name && this.feedback) {
+                            // Simulate submission logic
+                            this.submitted = true;
+                        } else {
+                            alert('Please complete the form.');
+                        }
+                    }
+                }
+
+            });
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount('#app');
+        </script>
+
+    </body>
+
+</html>

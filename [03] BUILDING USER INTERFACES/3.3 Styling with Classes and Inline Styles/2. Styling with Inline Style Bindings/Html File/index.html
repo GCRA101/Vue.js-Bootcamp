@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+    IMPORTANT NOTES:
+        1) Multiple Inline Style Binding Options
+            - via Object
+            - via Array
+        2) Using Inline Style Binding we assign css styling 
+           by directly writing css properties
+    -->
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title -->
+        <title>Styling with Inline Style Bindings</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- INLINE STYLE BINDING - Object Syntax -->
+            <div :style="{color: textColor, fontSize: fontSize + 'px'}"> Styled Text </div>
+            <hr/>
+            <!-- INLINE STYLE BINDING - Array Syntax -->
+             <div :style="[baseStyle, overrideStyle]"> Styled Div </div>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Instantiate new Vue Application + Build its Reactive State, Methods, Watchers...
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        // Properties for Object Syntax
+                        textColor: 'red',
+                        fontSize: 18,
+                        // Properties for Array Syntax
+                        baseStyle: {color:'blue', padding:'10px'},
+                        overrideStyle: { fontWeigth: 'bold'}
+                    }
+                },
+            });
+            // 2. Instruct Vue.js to take control of the html element assigned with id=app
+            app.mount("#app");
+        </script>
+
+    </body>
+
+
+</html>

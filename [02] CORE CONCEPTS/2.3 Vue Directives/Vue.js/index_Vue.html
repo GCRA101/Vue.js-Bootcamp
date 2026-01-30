@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head ------------------------------------------------------------------------>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Directives</title>
+    </head>
+
+    <!-- Body ------------------------------------------------------------------------>
+    <body>
+        <div id="app">
+            <!-- Two-Way Data Binding -->
+            <input v-model="newFruit" placeholder="Add a fruit"/>
+            <!-- Event Handling -->
+            <button @click="addFruit">Add</button>
+            <ul>
+                <!-- Looping + Text Interpolation -->
+                <li v-for="(fruit, index) in fruits" :key="index">{{fruit}}</li>
+            </ul>
+            <!-- Conditional Rendering -->
+            <p v-if="fruits.length===0">No fruits added yet.</p>
+        </div>
+
+        <!-- References to JS Files -------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script>
+            // 1. Create a Vue Application Instance
+            const {createApp} = Vue;
+            // 2. Build Vue Application Reactive State and Methods
+            createApp({
+                // 2.1 Reactive State
+                data() {
+                    return {
+                        newFruit: '',
+                        fruits:[]
+                    }
+                },
+                // 2.2 Methods - Functions interacting with the Reactive State
+                methods: {
+                    addFruit() {
+                        if (this.newFruit.trim()) {
+                            this.fruits.push(this.newFruit.trim())
+                            this.newFruit=''
+                        }
+                    }
+                }
+            // 3. Instruct Vue to take control of the DOM Element with ID=app
+            }).mount('#app')
+        </script>
+    </body>
+</html>

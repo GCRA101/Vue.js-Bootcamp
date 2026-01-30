@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+    IMPORTANT NOTES:
+        1) Multiple Class Binding Options
+            - via Object
+            - via Array
+            - via Computed Properties
+        2) THIS keyword
+            -To be able to use and modify the values assigned to the variables of the reactive state,
+             we have to call them using the "this" keyword. The use of the "this" keyword is mandatory!
+             It is NOT OPTIONAL!!
+
+    -->
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title -->
+        <title>Styling with Class Bindings</title>
+
+        <!-- CSS STYLING - Internal Implementation -->
+        <style>
+            /* General Styling */
+            div {
+                min-width: 25%;
+            }
+            
+            button{
+                margin: 0px 10px 0px 20px;
+            }
+
+            .section {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: start;
+                align-items: center;
+            }
+
+            /* Specific Styling for Testing Class Bindings */
+            .active {
+                color: orange;
+                font-size: 20px;
+                outline-width: 10px;
+                outline-color: green;
+                visibility: visible;
+            }
+
+            .text-bold{
+                color: black;
+                font-size: 30px;
+                font-weight: bold;
+                font-family: "UnifrakturMaguntia", cursive;
+            }
+
+            .box{
+                border-radius:0%;
+                border: 5px solid black;
+                margin: 10px 10px 20px 10px;
+                padding: 10px 20px 10px 20px;
+                box-shadow: 10px 5px 5px grey;
+            }
+
+            .highlight{
+                border: 10px solid red;
+                border-image: linear-gradient(yellow, red) 30;             
+                box-shadow: 10px 5px 5px yellow;
+            }
+
+            .btn{
+                border: 2px solid grey;
+            }
+
+            .btn-primary{
+                border: 10px solid black;
+                border-radius: 10%;
+            }
+
+            .btn-disabled{
+                cursor: not-allowed;
+                opacity: 0.2;
+            }
+
+        </style>
+        
+        <!-- References to Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <div class="section">
+                <!-- CLASS BINDING - Object Syntax -->
+                <div v-bind:class="{ active: isActive, 'text-bold': isBold}">Stylish Text</div>
+                <button @click="textBold">Bold</button>
+            </div>
+            <div class="section">
+                <!-- CLASS BINDING - Array Syntax -->
+                <div v-bind:class="['box', isSelected ? 'highlight' : '']">Box</div>
+                <button @click="highlight">Highlight</button>
+            </div>
+            <div class="section">
+                <!-- CLASS BINDING - Computed Properties Syntax-->
+                <div v-bind:class="buttonClasses">Click me</div>
+                <button @click="disableBtn">Disable</button>
+            </div>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Instantiate new Vue Application + Build its Reactive State, Methods, Watchers...
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {    
+                        isActive: true,
+                        isBold: true,
+                        isSelected: false,
+                        isPrimary: true,
+                        isDisabled: false
+                    }
+                },
+                // Methods
+                methods: {
+                    textBold() {
+                        this.isBold=!this.isBold;
+                    },
+                    highlight() {
+                        this.isSelected=!this.isSelected;
+                    },
+                    disableBtn() {
+                        this.isDisabled=!this.isDisabled;
+                    }
+                },
+                // Computed
+                computed: {
+                    buttonClasses() {
+                        return {
+                            'btn': true,
+                            'btn-primary': this.isPrimary,
+                            'btn-disabled': this.isDisabled
+                        };
+                    }
+                }
+            });
+            // 2. Instruct Vue to take control of the Html div element assigned with ID=app
+            app.mount("#app");
+        </script>
+
+    </body>
+</html>

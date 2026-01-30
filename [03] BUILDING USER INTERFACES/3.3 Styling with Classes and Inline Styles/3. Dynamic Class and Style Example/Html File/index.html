@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dynamic Class and Style Example</title>
+
+        <!-- CSS STYLING - External Implementation -->
+        <link
+            rel="stylesheet"
+            href="./styles.css"
+        />
+
+        <!-- Reference Link to Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Mountains+of+Christmas:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- CLASS BINDING + INLINE STYLE BINDING + EVENT LISTENING + TEXT INTERPOLATION -->
+            <button
+                :class="{'btn': true, 'btn-success':isToggled, 'btn-danger':!isToggled}"
+                :style="{ fontSize: isToggled ? '18px' : '14px'}"
+                @click="isToggled = !isToggled"
+            >
+                {{ isToggled ? 'On' : 'Off' }}
+            </button>
+
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Instantiate a Vue Application + Build its Reactive State, Methods, Watchers...
+            const app= Vue.createApp({
+                data() {
+                    return {
+                        isToggled: true
+                    }
+                }
+            });
+            // 2. Instruct Vue.js to take control of the html element having id=app
+            app.mount("#app")
+        </script>
+    </body>
+
+</html>

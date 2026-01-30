@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -------------------------------------------------------------------------------------->    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Submission</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div>
+            <form id="feedbackForm">
+                <input id="inputName" placeholder="Your name"/>
+                <textarea id="inputFeedback" placeholder="Your feedback"></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <p id="message"></p>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../jquery-3.7.1.min.js"></script>
+        <!-- Our Javascript File -->
+         <script type="text/javascript">
+
+            /* IMPORTANT NOTES:
+               1) The "submit" event is fired by the <form> html element! not the <button> element!!
+               2) To change the "submit event" we need to prevent it! Therefore, we need to pass the 
+                  event input parameter to the anonymous function passed as event handler and call the 
+                  following method event.preventDefault() inside of it.
+               3) In JQuery, $(...).text(...), NOT $(...).text=....
+            */
+
+            $("#feedbackForm").on("submit", function(event) {
+                // Prevent the default submit event to supersede the handler function
+                event.preventDefault();
+                // Get the values input by the user
+                const name = $("#inputName").val(); 
+                const feedback = $("#inputFeedback").val();
+                // Return message in the <p> html element or warning message
+                if (name!=='' && feedback!=='') {
+                    $("#message").text(`Thanks for your feedback, "${name}"`);
+                } else {
+                    alert('Please complete the form.');
+                }
+            });
+         </script>
+    </body>
+</html>

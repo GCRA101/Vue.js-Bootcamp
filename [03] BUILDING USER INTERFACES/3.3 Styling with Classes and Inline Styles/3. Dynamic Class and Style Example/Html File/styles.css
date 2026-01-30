@@ -1,0 +1,19 @@
+.btn {
+    background-color: grey;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: greenyellow;
+    border: 3px solid blue;
+    font-family: "Asimovian", sans-serif;
+}
+
+.btn-danger {
+    background-color: orange;
+    border: 3px solid red;
+    font-family: "UnifrakturMaguntia", cursive;
+}

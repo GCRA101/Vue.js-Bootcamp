@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modifiers and Dynamic Events Handling</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Two-Way Binding with Input Modifiers -->
+            <input v-model.trim="name" />
+            <input v-model.number="age" />
+            <!-- Event Listening with Event Modifiers -->
+            <button @click.prevent="doSomething">Click</button>
+            <input v-model="nationality" @keyup.enter="submitForm" />
+            <!-- Dynamic Event Handling -->
+            <button @click="handleAction('save')">Save</button>
+            <button @click="handleAction('delete')">Delete</button>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+         <script>
+            // 1. Create a Vue Application Instance + Build its Reactive State, Watchers and Methods
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        name:'',
+                        age:'',
+                        nationality:'',
+                    };
+                },
+                // Methods
+                methods: {
+                    doSomething() {
+                        console.log("Great mate! You've clicked the button!");
+                    },
+                    submitForm() {
+                        console.log(`Your nationality is: "${this.nationality}"`);
+                    },
+                    handleAction(type){
+                        console.log(`You chose to ${type}`);
+                    }
+                }
+            });
+
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount('#app');
+
+         </script>
+
+    </body>
+</html>

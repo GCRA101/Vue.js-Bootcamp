@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <!-- Head ------------------------------------------------------------------------>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computed Properties</title>
+    </head>
+
+    <!-- Body ------------------------------------------------------------------------>
+    <body>
+        <!-- HTML Content ------------------------------------------------------------>
+        <div id="app">
+            <!-- Two-Way Data Binding -->
+            <input v-model="firstName" placeholder="First Name"/>
+            <input v-model="lastName" placeholder="Last Name"/>
+            <!-- Text Interpolation -->
+            <p>Full Name: {{fullName}}</p>
+        </div>
+
+        <!-- References to JS Files -------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Create a Vue Application Instance
+            const {createApp} = Vue;
+            // 2. Build Vue Application Reactive State and Methods
+            const app = Vue.createApp({
+                // 2.1 Reactive State
+                data() {
+                    return {
+                        firstName: '',
+                        lastName: ''
+                    };
+                },
+                // 2.2 Computed Properties
+                computed: {
+                    fullName() {
+                        return `${this.firstName} ${this.lastName}`.trim();
+                    }
+                }
+            });
+            // 3. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount('#app');
+        </script>
+    </body>
+
+</html>

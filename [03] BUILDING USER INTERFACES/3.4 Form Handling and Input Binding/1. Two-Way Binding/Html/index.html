@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--
+    IMPORTANT NOTES
+        1. Two-Way Binding is essential to create Forms and is achieved using the v-model
+           directive.
+    -->
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Two-Way Binding</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Two-Way Binding -->
+            <input v-model="name" placeholder="Enter your name"/>
+            <!-- Text Interpolation -->
+            <p>Hello, {{ name }}</p>
+        </div>
+
+        <!-- References to JS Scripts -------------------------------------------------------------->
+        <!-- Vue.js JS Script -->
+        <script src="../../vue.global.js" charset="UTF-8"></script>
+        <!-- Our JS Script -->
+        <script type="text/javascript">
+            // 1. Instantiate a new Vue.js Application + Build its Reactive State, Methods...
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        name: ''
+                    }
+                },
+            });
+            // 2. Instruct Vue.js to take control of the HTML element having id=app
+            app.mount("#app");
+
+        </script>
+    </body>
+</html>

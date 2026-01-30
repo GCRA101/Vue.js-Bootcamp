@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head ------------------------------------------------------------------------>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Vue.js</title>
+</head>
+
+<!-- Body ------------------------------------------------------------------------>
+<body>
+    <!-- HTML Content ------------------------------------------------------------>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <button @click="reverseMessage">Reverse Message</button>
+    </div>
+    
+    <!-- References to JS Files -------------------------------------------------->
+    <!-- Vue.js Javascript File -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Our Javascript File -->
+    <script>
+        // 1. Create a Vue Application Instance
+        const {createApp} = Vue;
+        // 2. Build Vue Application Reactive State and Methods
+        createApp({
+            // 2.1 Reactive State
+            data() {
+                return {
+                    message: 'Hello,Vue!'
+                };
+            },
+            // 2.2 Methods - Functions interacting with the Reactive State
+            methods: {
+                reverseMessage() {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        // 3. Instruct Vue to take control of the DOM Element with ID=app
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -------------------------------------------------------------------------------------->    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Real-Time Form Feedback</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Two-Way Binding -->
+            <input v-model="password" type="password" placeholder="Password" />
+            <!-- Attributes Binding -->
+            <p v-bind:style="{color: password.length >= 8 ? 'green' : 'red'}">
+                <!-- Text Interpolation with JS Ternary Expression -->
+                {{ password.length >= 8 ? 'Strong Password' : 'Too short'}}
+            </p>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script> 
+        <!-- Our Javascript File -->
+        <script>
+            // 1. Create a Vue Application Instance + Build its Reactive State, Methods, Watchers
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        password:'',
+                    };
+                }
+            });
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount("#app")
+        </script>
+    </body>
+
+</html>

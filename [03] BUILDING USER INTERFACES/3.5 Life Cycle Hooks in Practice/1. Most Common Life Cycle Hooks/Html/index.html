@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+IMPORTANT NOTES
+    1. @submit.prevent
+        - Vue.js Directive allowing to stop the default event handler for the form's 
+          submission and replace it with our own method.
+          The .prevent stops the default browser reload.
+    2. JS External Implementation
+        - Also when using Vue.js within an HTML file (like this case), we can always 
+          store all our own javascript code in an external file and just implement it 
+          in Html using via External implementation.
+        - The reference to our JS file MUST always be AFTER the reference to the 
+          Vue.js file
+    3. Main LIFECYCLE HOOKS
+        - created(), mounted(), updated(), beforeDestroy()
+    4. Activation/Run of beforeDestroy()
+        - beforeDestory() gets run NOT when closing/refreshing the Web Browser, but when...
+            a. NAVIGATING AWAY from a ROUTE (using Vue Router)
+            b. USING v-if=false to REMOVE the COMPONENT
+            c. MANUALLY UNMOUNTING the App by with app.unmount();
+-->
+
+    <!-- Head -------------------------------------------------------------------------------------->    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title -->
+        <title>Most Common Life Cycle Hooks</title>
+        <!-- CSS Styling - External Implementation -->
+        <link
+            rel="stylesheet"
+            href="./styles.css" />
+        <!-- Reference Links to Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Lavishly+Yours&family=Moutains+of+Christmas:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <h2>{{message}}</h2>
+            <input id="myInput" v-model="counter" placeholder="Input counter"/>
+            <button v-on:click="unmountApp">UNMOUNT</button>
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../../vue.global.js"></script>
+        <!-- Our JS Script File -->
+        <script src="./index.js" type="text/Javascript"></script>
+    </body>
+
+
+</html>

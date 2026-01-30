@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head ------------------------------------------------------------------------>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JQuery alternative to Vue Directives</title>
+    </head>
+
+    <!-- Body ------------------------------------------------------------------------>
+    <body>
+
+        <div>
+            <input placeholder="Add a fruit" />
+            <button>Add</button>
+            <!-- The rest of the HTML elements get created dynamically by our js script below -->
+        </div>
+        
+        <!-- References to JS Files -------------------------------------------------->
+        <!-- JQuery Javascript File -->
+        <script src="./jquery-3.7.1.min.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Initialize the array containing all fruits input by the user
+            var fruits = [];
+            // 2. Define Function for adding input fruit in fruits array  [JQUERY]
+            function addFruit() {
+                var inputObj=$("input");
+                var newFruit = inputObj.val();
+                if (newFruit.trim()) {
+                    fruits.push(newFruit);
+                }
+            }
+            // 3. Define Function for updating the unordered list of fruits rendered below he Add Button  [JQUERY]
+            function updateList() {
+                if (fruits.length===0) {
+                    $("button").after("<p>No fruits added yet.</p>");
+                } else {
+                    var htmlCode = '<ul>';
+                    fruits.forEach((fruit)=>htmlCode=htmlCode+"<li>"+fruit+"</li>");
+                    htmlCode+='</ul>';
+                    $("ul, p").remove();
+                    $("button").after(htmlCode);
+                }
+            }
+            // 4. Assign to document the function updateList as load event handler [NATIVE JS]
+            document.addEventListener("DOMContentLoaded",updateList());
+            // 5. Assign click event handler to the button HTML object [JQUERY]
+            $("button").click(function() {addFruit(); updateList();})
+        </script>
+    </body>
+
+</html>

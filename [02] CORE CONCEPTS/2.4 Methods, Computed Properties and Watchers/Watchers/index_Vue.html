@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Watchers</title>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->        
+        <div id="app">
+            <!-- Two-Way Binding -->
+            <input v-model="searchTerm" placeholder="Search..." />
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- Vue.js Javascript File -->
+        <script src="../vue.global.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            // 1. Create a Vue Application Instance + Build its Reactive State, Watchers and Methods
+            const app=Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        searchTerm:''
+                    };
+                },
+                // Watchers
+                watch: {
+                    searchTerm(newVal, oldVal) {
+                        console.log(`Search changed from "${oldVal}" to "${newVal}`);
+                        this.fetchResults(newVal);
+                    }
+                },
+                // Methods
+                methods: {
+                    fetchResults(query) {
+                        // Simulate API Call
+                        console.log(`Fetching results for: ${query}`);
+                    }
+                }
+            });
+            // 2. Instruct Vue to take control of the DOM Element with ID=app
+            app.mount('#app');
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head --------------------------------------------------------------------------------------> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Real Time Form Feedback</title>
+
+        <style>
+            /* Default Color assigned to the feedback paragraph is red */
+            #feedback {
+                color: red;
+            }
+            /* Color assigned only when password is longer than 8 characters.
+               Using !important, we make sure this css style supersedes the one above */
+            .strongPassword {
+                color: green !important;
+            }
+        </style>
+    </head>
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div>
+            <input type="password" placeholder="Password" />
+            <p id="feedback"></p>
+
+        </div>
+
+        <!-- References to JS Files ---------------------------------------------------------------->
+        <!-- JQuery Javascript File -->
+        <script src="../jquery-3.7.1.min.js"></script>
+        <!-- Our Javascript File -->
+        <script type="text/javascript">
+            /* Add Event Listener to the input html element */
+            $("input").on("input", function() {
+                if ($(this).val().length >= 8) {
+                    $("#feedback").addClass("strongPassword");
+                    $("#feedback").text("Strong Password");
+                } else {
+                    $("#feedback").removeClass("strongPassword");
+                    $("#feedback").text("Too Short!");
+                }
+            })
+
+        </script>
+    
+    </body>
+</html>
