@@ -3,7 +3,7 @@ IMPORTANT NOTES
     1. USE of CHILD COMPONENTS step-by-step
         1) USE the Component in the <template> section passing values to its props via
            custom HTML attributes and adding Event Listener to the EMITTED EVENT 
-           via v-bind(@). 
+           via v-on(@). 
            -- in <template></template> section
         2) IMPORT the component vue file. -- in <script></script>
         3) REGISTER the Component. -- in <script></script> components
@@ -21,20 +21,20 @@ IMPORTANT NOTES
 <!-- SCRIPT -------------------------------------------------------------------------->
 <script>
   // 2. IMPORT the component
-import UserCard from './components/UserCard.vue'
+  import UserCard from './components/UserCard.vue'
 
-export default {
-  name: 'App',
-  // 3. REGISTER the component
-  components: {
-    UserCard
-  },
-  // 4. HANDLE the EMITTED EVENT and the RETURNED DATA from the CHILD COMPONENT
-  methods: {
-    handleGreet(name) {
-      alert(`Hello, ${name}!`);
+  export default {
+    name: 'App',
+    // 3. REGISTER the component
+    components: {
+      UserCard
+    },
+    // 4. HANDLE the EMITTED EVENT and the RETURNED DATA from the CHILD COMPONENT
+    methods: {
+      handleGreet(name) {
+        alert(`Hello, ${name}!`);
+      }
     }
-  }
 }
 </script>
 
