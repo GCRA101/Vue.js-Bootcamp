@@ -5,7 +5,6 @@ IMPORTANT NOTES
            custom HTML attributes. -- in <template></template> section
         2) IMPORT the component vue file. -- in <script></script> section
         3) REGISTER the Component. -- in <script></script> section
-
 -->
 
 
@@ -18,14 +17,14 @@ IMPORTANT NOTES
 <!-- SCRIPT -------------------------------------------------------------------------->
 <script>
   // 2. IMPORT the component
-import UserCard from './components/UserCard.vue'
+  import UserCard from './components/UserCard.vue'
 
-export default {
-  name: 'App',
-  // 3. REGISTER the component
-  components: {
-    UserCard
-  }
+  export default {
+    name: 'App',
+    // 3. REGISTER the component
+    components: {
+      UserCard
+    }
 }
 </script>
 
