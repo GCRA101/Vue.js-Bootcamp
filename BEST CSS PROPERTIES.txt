@@ -1,5 +1,11 @@
 BEST CSS PROPERTIES
 
+background-image (use it with linear-gradient ;D)
+background-size
+background-repeat
+background-position
+background-blend-mode
+
 border-image
 border-start-end-radius
 border-start-start-radius
