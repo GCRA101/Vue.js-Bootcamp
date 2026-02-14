@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--
+    IMPORTANT NOTES
+        1. SINGLE PAGE APPLICATIONS
+            - SPAs (i.e. SINGLE PAGE APPLICATIONS) consists in a single HTML page (i.e. index.html)
+              which view changes dynamically thanks to Javascript rather than multiple different
+              HTML pages loaded by the browser every time.
+        2. SPAs without VUE ROUTER
+            - Without using Vue Router it's possible to use a very simple SPA using Vue directives
+              (v-if in particular).
+                - e.g. if the user clicks on the About button, the portion of HTML body that is not
+                       in the About <div></div> is just NOT RENDERED.
+    -->
+
+
+    <!-- Head -------------------------------------------------------------------------------------->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title -->
+        <title>Introduction to SPAs</title>
+        
+        <!-- Links to Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kablammo&display=swap" rel="stylesheet">
+        
+        <!-- CSS Style with INTERNAL IMPLEMENTATION -->
+        <style>
+            #app {
+                /* COLOR Properties */
+                background-color: #FFF7CD;
+                /* BOX Properties */
+                border: 1px solid purple;
+                border-radius: 10px;
+                /* DIMENSION Properties */
+                width: 300px;
+                max-height: 500px;
+                /* POSITION Properties */
+                position: relative;
+                top: 20vh;
+                left: 30vw;
+                /* DISPLAY Property */
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: start;
+                align-items: center;
+            }
+
+            #app div {
+                /* DISPLAY Property */
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            button {
+                /* COLOR Properties */
+                background-color: bisque;
+                /* FONT Properties */
+                color: brown;
+                font-size: 20px;
+                font-weight: 100;
+                font-family: "Kablammo", system-ui;
+                text-align: left;
+                /* BOX Properties */
+                border: 1px solid red;
+                border-radius: 10px;
+                padding: 2px 10px 2px 10px;
+                margin: 10px;
+                box-shadow: 0px 0px 10px green;
+            }
+        </style>
+    </head>
+
+
+    <!-- Body -------------------------------------------------------------------------------------->
+    <body>
+        <!-- HTML Content -------------------------------------------------------------------------->
+        <div id="app">
+            <!-- Button with Events Handling [v-on] -->
+            <button @click="view = 'home'">Home</button>
+            <button @click="view = 'about'">About</button>
+            <!-- Div Elements with conditional vue directive [v-if]-->
+            <div v-if="view === 'home'">
+                <h2>Home View</h2>
+                <p>Welcome to our site!</p>
+            </div>
+            <!-- Div Elements with conditional vue directive [v-if]-->
+            <div v-if="view === 'about'">
+                <h2>About View</h2>
+                <p>This site is powered by Vue.js</p>
+            </div>
+        </div>
+
+        <!-- References to JS Scripts -------------------------------------------------------------->
+        <!-- Vue.js JS Script -->
+        <script src="./vue.global.js"></script>
+        <!-- Our JS Script -->
+        <script>
+            // 1. Instantiate a new Vue.js Application + Build its Reactive State, Methods...
+            const app = Vue.createApp({
+                // Reactive State
+                data() {
+                    return {
+                        view: 'home'
+                    }
+                },
+            });
+            // 2. Instruct Vue.js to take control of the HTML element having id=app
+            app.mount("#app");
+        </script>
+    </body>
+
+</html>
