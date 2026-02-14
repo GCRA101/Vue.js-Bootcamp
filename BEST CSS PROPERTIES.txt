@@ -50,3 +50,7 @@ image-orientation
 image-rendering
 image-resolution
 interactivity
+
+
+
+text-shadow
