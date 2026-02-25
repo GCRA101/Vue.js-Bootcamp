@@ -95,4 +95,38 @@ IMPORTANT NOTES
 
 <!-- STYLE --------------------------------------------------------------------------->
 <style scoped>
+  #app {
+    /* DISPLAY Properties */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .spinner{
+    width: 300px;
+    height: 300px;
+  }
+  ul {
+    /* COLOR Properties */
+    background-color: #F5F2F2;
+    /* FONT Properties */
+    color: #5A7ACD;
+    font-size: 25px;
+    font-weight: 100;
+    font-family: "Marck Script", cursive;
+    text-align: left;
+    text-shadow: 0px 1px 2px #2B2A2A;
+    /* BOX Properties */
+    border: 2px solid  #2B2A2A;
+    margin: 5px 10px 5px 10px;
+    padding: 10px 30px 10px 30px;
+    box-shadow: 0px 10px 30px #FEB05D;
+    /* DIMENSION Properties */
+    min-width: 500px;
+    width: 750px;
+    max-width: 1500px;
+    /* FLEXBOX Properties */
+    flex-basis: 500px;
+  }
 </style>
