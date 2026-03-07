@@ -1,4 +1,17 @@
-
+<!-- IMPORTANT NOTES 
+    1. Component .vue file having the following features
+        - TEMPLATE (Html)
+            - <form> HTML element running method handleSubmit
+              as soon as the submit button is clicked.
+            - <input> HTML element allowing to input new task
+            - <button> HTML element working as submit button for the HTML form
+        - SCRIPT (Javascript)
+            - Define Local Reactive State
+            - Define Methods
+                - Method handleSubmit() for emitting custom event to parent
+                  vue component for passing data to it.
+        - STYLE (CSS) - optional
+-->
 
 
 <!-- TEMPLATE ------------------------------------------------------------------------>
@@ -73,6 +86,7 @@
         width: 50%;
         
     }
+
     button {
         /* BOX Properties */
         padding: 1px;

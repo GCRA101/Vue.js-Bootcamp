@@ -1,4 +1,14 @@
-
+<!-- IMPORTANT NOTES 
+    1. Component .vue file having the following features
+        - TEMPLATE (Html)
+            - <TaskItem> vue component equipped with v-for, v-bind and v-on vue
+              directives
+        - SCRIPT (Javascript)
+            - Import Child Components
+            - Set-up properties
+            - Register Child Components
+        - STYLE (CSS) - Optional
+-->
 
 
 <!-- TEMPLATE ------------------------------------------------------------------------>

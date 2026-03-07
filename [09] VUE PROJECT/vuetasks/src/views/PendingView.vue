@@ -1,4 +1,19 @@
-
+<!-- IMPORTANT NOTES 
+    1. View .vue file having the following features
+        - TEMPLATE (Html)
+            - TaskForm vue component allowing input of new task
+            - <div> displaying loading message while fetching data from external api
+            - TaskList vue component listing all tasks fetched from external api
+        - SCRIPT (Javascript)
+            - Import Helper Tools mapActions and mapGetters from Vuex to communicate
+              with Central Store
+            - Import Child Components
+            - Register Child Components
+            - Set-up Computed Properties using Vuex Store Module Getters
+            - Set-up Methods using Vuex Store Module Actions
+            - Set-up Life-Cycle Hooks (i.e. created())
+        - STYLE (CSS) - optional
+-->
 
 <!-- TEMPLATE ------------------------------------------------------------------------>
 <template>
@@ -12,7 +27,7 @@
 
 <!-- SCRIPT -------------------------------------------------------------------------->
 <script>
-
+    // IMPORT Helper Tools from VUEX to communicate with Central Store
     import {mapActions, mapGetters} from 'vuex';
     // 2. IMPORT Child Components
     import TaskForm from '../components/TaskForm.vue';
@@ -23,6 +38,8 @@
         components: {TaskForm, TaskList},
 
         // COMPUTED
+        /* Computed properties returning reactive state data from Vuex Store
+           Module using its getters. */
         computed: {
             ...mapGetters('tasks', ['allTasks', 'isLoading']),
             tasks() {
@@ -44,7 +61,9 @@
             }
         },
         
-        // LIFE-HOOKS
+        // LIFECYCLE-HOOKS
+        /* CREATED() - loads tasks via action fetchTasks() 
+           as soon as the page opens*/
         created() {
             this.fetchTasks();
         }

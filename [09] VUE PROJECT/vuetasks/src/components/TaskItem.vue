@@ -1,4 +1,21 @@
-
+<!-- IMPORTANT NOTES 
+    1. Component .vue file having the following features
+        - TEMPLATE (Html)
+            - <li> HTML element restricting the use of the component inside an HTML
+              list element - ordered <ol></ol> or un-ordered <ul></ul>.
+            - <label> HTML element
+            - <input> HTML element of type checkbox for toggling task
+            - <span> HTML element for displaying content of the task and assign to it
+              different CSS Styling based on dynamic class assignment.
+        - SCRIPT (Javascript)
+            - Define Properties
+            - Define Local Reactive State
+            - Define Methods
+                - Method emitChange() to emit custom event to transfer data to the 
+                  vue parent component.
+        - STYLE (CSS)
+            - Use of CSS Font Properties
+-->
 
 
 <!-- TEMPLATE ------------------------------------------------------------------------>
