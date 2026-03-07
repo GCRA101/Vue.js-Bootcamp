@@ -6,7 +6,7 @@
         <!-- 1. USE Child Components - v-on + v-bind -->
         <TaskForm @task-added="handleAddTask"/>
         <div v-if="loading">Loading tasks...</div>
-        <TaskList :task="tasks" @task-updated="updateTaskLocally"/>
+        <TaskList :tasks="tasks" @task-updated="updateTaskLocally"/>
     </div>
 </template>                                                 
 
@@ -22,6 +22,7 @@
     export default {
         // 3. REGISTER Child Components
         components: {TaskForm, TaskList},
+
         // COMPUTED
         computed: {
             ...mapGetters('tasks', ['allTasks', 'isLoading']),
@@ -32,6 +33,7 @@
                 return this.isLoading;
             }
         },
+
         // METHODS
         methods: {
             ...mapActions('tasks', ['fetchTasks', 'addTask']),
@@ -42,6 +44,7 @@
                 console.log('Task updated:', updatedTask);
             }
         },
+        
         // LIFE-HOOKS
         created() {
             this.fetchTasks();
