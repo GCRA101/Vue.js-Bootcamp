@@ -8,7 +8,7 @@ IMPORTANT NOTES
             2.3 Create local reactive methods calling Vuex Store GETTERS
             2.4 Create local reactive methods calling Vuex Store MUTATIONS
             2.5 Create local reactive methods calling Vuex Store ACTIONS
-            2.6 Return variables/objects/funcitons extracted from VUEX STORE 
+            2.6 Return variables/objects/functions extracted from VUEX STORE 
                 and to be used in <template></template> section
 -->
 
