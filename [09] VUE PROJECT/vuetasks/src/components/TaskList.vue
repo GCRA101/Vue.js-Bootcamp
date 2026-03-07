@@ -3,7 +3,7 @@
 
 <!-- TEMPLATE ------------------------------------------------------------------------>
 <template>
-    <ul>
+    <ol>
         <!-- 1. USE the Child Component - v-for + v-bind + v-on -->
         <TaskItem
             v-for="task in tasks"
@@ -11,7 +11,7 @@
             :task="task"
             @task-updated="$emit('task-updated', $event)"
         />
-    </ul>
+    </ol>
 </template>
 
 

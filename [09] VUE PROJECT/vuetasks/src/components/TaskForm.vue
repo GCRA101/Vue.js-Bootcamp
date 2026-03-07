@@ -47,4 +47,38 @@
 
 <!-- STYLE --------------------------------------------------------------------------->
 <style scoped>
+    form {
+        /* DISPLAY Properties */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: start;
+        align-items: center;
+        gap: 1%;
+    }
+
+    form > * {
+        /* BOX Properties */
+        border: 3px solid black;
+        border-radius: 5px;
+        /* DIMENSION Properties */
+        height: 20px;
+    }
+
+    input {
+        /* COLOR Properties */
+        background-color: #89D4FF;
+        /* DIMENSION Properties */
+        min-width: 200px; 
+        width: 50%;
+        
+    }
+    button {
+        /* BOX Properties */
+        padding: 1px;
+        /* DIMENSION Properties */
+        min-width: 50px; 
+        width: 5%;
+        height: 30px; 
+    }
 </style>

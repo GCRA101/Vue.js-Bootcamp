@@ -51,7 +51,7 @@ const actions = {
         commit('SET_LOADING',true);
         try {
             // Execute HTTP GET Request
-            const response = await api.get('/todos?_limit=5');
+            const response = await api.get('/todos?_limit=20');
             // Execute the Mutation SET_TASKS
             commit('SET_TASKS', response.data);
         } catch (err) {

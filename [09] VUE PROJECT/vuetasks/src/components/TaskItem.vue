@@ -43,6 +43,15 @@ export default {
 <!-- STYLE --------------------------------------------------------------------------->
 <style scoped>
     .done {
+        /* FONT Properties */
+        color: darkgray;
+        font-style: italic;
+        font-weight: normal;
         text-decoration: line-through;
+    }
+    span {
+        /* FONT Properties */
+        font-weight: bold;
+        text-shadow: 1px 0px 10px #89D4FF;
     }
 </style>
