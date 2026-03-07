@@ -3,15 +3,18 @@
 <!-- TEMPLATE ------------------------------------------------------------------------>
 <template>
     <div>
-        <!-- 1. USE the Child Components - v-on + v-bind -->
-        <TaskForm @task-added="addTask"/>
-        <TaskList :task="tasks" @task-updated="updateTask"/>
+        <!-- 1. USE Child Components - v-on + v-bind -->
+        <TaskForm @task-added="handleAddTask"/>
+        <div v-if="loading">Loading tasks...</div>
+        <TaskList :tasks="tasks" @task-updated="updateTaskLocally"/>
     </div>
-</template>                                                 
+</template>
 
 
 <!-- SCRIPT -------------------------------------------------------------------------->
 <script>
+
+    import {mapActions, mapGetters} from 'vuex';
     // 2. IMPORT Child Components
     import TaskForm from '../components/TaskForm.vue';
     import TaskList from '../components/TaskList.vue';
@@ -19,23 +22,32 @@
     export default {
         // 3. REGISTER Child Components
         components: {TaskForm, TaskList},
-        // REACTIVE STATE
-        data() {
-            return {
-                tasks: []
+
+        // COMPUTED
+        computed: {
+            ...mapGetters('tasks', ['allTasks', 'isLoading']),
+            tasks() {
+                return this.allTasks.filter(task => task.completed);
+            },
+            loading() {
+                return this.isLoading;
             }
         },
+
         // METHODS
         methods: {
-            // Add Input Task to this.tasks data structure
-            addTask(task) {
-                this.tasks.push(task);
+            ...mapActions('tasks', ['fetchTasks', 'addTask']),
+            async handleAddTask(task) {
+                await this.addTask(task);
             },
-            // Update existing task with input task based on id
-            updateTask(updatedTask) {
-                const index = this.tasks.findIndex(t=>t.id===updatedTask.id);
-                if (index!==-1) this.tasks.splice(index,1,updatedTask);
+            updateTaskLocally(updatedTask) {
+                console.log('Task updated:', updatedTask);
             }
+        },
+        
+        // LIFE-HOOKS
+        created() {
+            this.fetchTasks();
         }
     };
 </script>
